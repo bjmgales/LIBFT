@@ -1,24 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isascii.c                                       :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bgales <bgales@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/18 14:52:35 by bgales            #+#    #+#             */
-/*   Updated: 2021/10/18 15:09:27 by bgales           ###   ########.fr       */
+/*   Created: 2021/10/19 17:36:43 by bgales            #+#    #+#             */
+/*   Updated: 2021/10/19 18:02:55 by bgales           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int ft_isascii(int c)
+#include <stdlib.h>
+size_t  ft_strlen(const char *s)
 {
-    if ( c >= 0 && c <= 127)
-        return (1);
-    else
-        return (0);
-}
-int main()
-{
-    printf("%d", ft_isascii(' '));
-    printf("%d", isascii(' '));
+    int index;
+
+    index = 0;
+
+    while (s[index])
+        index++;
+    return index;
 }
