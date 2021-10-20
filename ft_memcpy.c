@@ -1,29 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memset.c                                        :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bgales <bgales@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/19 18:03:18 by bgales            #+#    #+#             */
-/*   Updated: 2021/10/20 13:51:37 by bgales           ###   ########.fr       */
+/*   Created: 2021/10/20 15:29:58 by bgales            #+#    #+#             */
+/*   Updated: 2021/10/20 16:40:52 by bgales           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
-
-void* ft_memset(void* b, int c, size_t len)
+#include<string.h>
+void* ft_memcpy(void* dst, const void* src, size_t n)
 {
-    int count;
-    char* str;
+    int i;
+    char* dest;
     
-    str = b;
-    count = 0;
+    i = 0;
+    dest = dst;
 
-    while (count < len)
-    {
-        str[count] = c;
-        count++;
+    if (n ==0)
+        return (dest);
+    while (i < n)
+    {    
+        ((unsigned char*)dst)[i] = ((unsigned char*)src)[i];
+        i++;
     }
-    return b;
+    return dest;
 }
