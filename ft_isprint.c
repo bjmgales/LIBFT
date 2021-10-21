@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_isprint.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bgales <bgales@student.42.frbgales>        +#+  +:+       +#+        */
+/*   By: bgales <bgales@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/18 15:40:36 by bgales            #+#    #+#             */
-/*   Updated: 2021/10/20 18:39:50 by bgales           ###   ########.fr       */
+/*   Updated: 2021/10/21 14:08:36 by bgales           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int ft_isprint(int c)
+int	ft_isprint(int c)
 {
-    if(c >= 32 && c < 127)
-        return (1);
-    return (0);
+	if (c >= 32 && c < 127)
+		return (1);
+	return (0);
 }

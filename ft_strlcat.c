@@ -1,30 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_bzero.c                                         :+:      :+:    :+:   */
+/*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bgales <bgales@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/20 13:56:05 by bgales            #+#    #+#             */
-/*   Updated: 2021/10/21 11:19:46 by bgales           ###   ########.fr       */
+/*   Created: 2021/10/21 14:14:14 by bgales            #+#    #+#             */
+/*   Updated: 2021/10/21 14:52:46 by bgales           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <strings.h>
+#include <string.h>
 
-void	ft_bzero(void *s, size_t n)
+size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 {
-	int		i;
-	char	*str;
+	int	i;
 
 	i = 0;
-	str = s;
-	if (n == 0)
-		return ;
-	while (i < n)
+	while (*dst)
+		dst++;
+	while (i < dstsize - 1)
 	{
-		str[i] = 0;
+		*dst++ = *src++;
 		i++;
 	}
-	str[++i] = '\0';
+}
+
+int main()
+{
+	char dst[5] = "haha";
+	char src[10] = "0123456789";
+	char dst1[5] = "haha";
+	char src1[10] = "0123456789";
+
+	ft_strlcat(dst, src, 3);
+	strlcat(dst1, src1, 3);
+	printf("%s\n", dst);
+	printf("%s\n", dst1);
 }

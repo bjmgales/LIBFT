@@ -3,28 +3,32 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bgales <bgales@student.42.frbgales>        +#+  +:+       +#+        */
+/*   By: bgales <bgales@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/20 18:17:35 by bgales            #+#    #+#             */
-/*   Updated: 2021/10/20 19:33:40 by bgales           ###   ########.fr       */
+/*   Updated: 2021/10/21 14:13:45 by bgales           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <string.h>
 #include <stdio.h>
-void* ft_memmove(void* dst, const void *src, size_t len)
+
+void	*ft_memmove(void *dst, const void *src, size_t len)
 {
+	int		i;
+	char	*tmp1;
+	char	*tmp2;
 
-}
-int main()
-{
-	char src[100] = "haha drole";
-	char dest[15] = "dst";
-	char src1[6] = "abcde";
-	char dest1[6] = "abcde";
-
-	//memmove(dest, src, 16);
-	memcpy(dest1+2, src1, 3);
-	printf("%s\n", dest1);
-
+	i = 0;
+	tmp1 = dst;
+	tmp2 = (char)*src;
+	if (len == 0)
+		return (dst);
+	while (i < len)
+	{
+		tmp1[i] = tmp2[i];
+		i++;
+	}
+	dst = tmp1;
+	return (tmp1);
 }
