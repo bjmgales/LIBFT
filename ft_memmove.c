@@ -1,30 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bgales <bgales@student.42.frbgales>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/20 15:29:58 by bgales            #+#    #+#             */
-/*   Updated: 2021/10/21 09:36:06 by bgales           ###   ########.fr       */
+/*   Created: 2021/10/20 18:17:35 by bgales            #+#    #+#             */
+/*   Updated: 2021/10/20 19:33:40 by bgales           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
 #include <string.h>
-void* ft_memcpy(void* dst, const void* src, size_t n)
+#include <stdio.h>
+void* ft_memmove(void* dst, const void *src, size_t len)
 {
-    int i;
 
-    i = 0;
-
-    if (n ==0)
-        return (dst);
-    while (i < n)
-    {
-        ((unsigned char*)dst)[i] = ((unsigned char*)src)[i];
-        i++;
-    }
-    return dst;
 }
+int main()
+{
+	char src[100] = "haha drole";
+	char dest[15] = "dst";
+	char src1[6] = "abcde";
+	char dest1[6] = "abcde";
 
+	//memmove(dest, src, 16);
+	memcpy(dest1+2, src1, 3);
+	printf("%s\n", dest1);
+
+}
