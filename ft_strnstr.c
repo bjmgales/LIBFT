@@ -1,38 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bgales <bgales@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/21 11:20:50 by bgales            #+#    #+#             */
-/*   Updated: 2021/10/22 16:06:25 by bgales           ###   ########.fr       */
+/*   Created: 2021/10/22 18:59:05 by bgales            #+#    #+#             */
+/*   Updated: 2021/10/22 19:59:18 by bgales           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <string.h>
 #include <stdio.h>
 
-size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
+char	*ft_strnstr(const char *botteDeFoin, const char *aiguille, size_t len)
 {
-	int	i;
-	int	c;
+	size_t	stopper;
+	size_t	i;
 
 	i = 0;
-	c = 0;
-	if (dstsize < 1)
+	stopper = 0;
+	if (*aiguille == '\0')
+		return ((char *)(botteDeFoin));
+	while ((*botteDeFoin) && (stopper < len))
 	{
-		while (src[i])
+		while ((*botteDeFoin == aiguille[i]) && (stopper < len))
+		{
+			if (aiguille[i + 1] == '\0')
+				return ((char *)(botteDeFoin - i));
+			botteDeFoin++;
 			i++;
-		return (i);
+			stopper++;
+		}
+		i = 0;
+		stopper++;
+		botteDeFoin++;
 	}
-	while (c < dstsize - 1)
-	{
-		dst[c] = src[c];
-		c++;
-	}
-	dst[c] = '\0';
-	while (src[i])
-		i++;
-	return (i);
+	return (NULL);
 }

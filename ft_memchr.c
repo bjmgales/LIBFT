@@ -1,38 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bgales <bgales@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/21 11:20:50 by bgales            #+#    #+#             */
-/*   Updated: 2021/10/22 16:06:25 by bgales           ###   ########.fr       */
+/*   Created: 2021/10/22 16:30:56 by bgales            #+#    #+#             */
+/*   Updated: 2021/10/22 18:11:10 by bgales           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <string.h>
 #include <stdio.h>
 
-size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
+void	*ft_memchr(const void *s, int c, size_t n)
 {
-	int	i;
-	int	c;
+	size_t	counter;
+	char	*scpy;
 
-	i = 0;
-	c = 0;
-	if (dstsize < 1)
+	scpy = (void *)(s);
+	counter = 0;
+	while (scpy[counter] && counter < n)
 	{
-		while (src[i])
-			i++;
-		return (i);
+		if (scpy[counter] == c)
+		{
+			return (scpy + counter);
+		}
+		counter++;
 	}
-	while (c < dstsize - 1)
-	{
-		dst[c] = src[c];
-		c++;
-	}
-	dst[c] = '\0';
-	while (src[i])
-		i++;
-	return (i);
+	return (NULL);
 }

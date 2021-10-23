@@ -1,38 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*   ft_strcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bgales <bgales@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/21 11:20:50 by bgales            #+#    #+#             */
-/*   Updated: 2021/10/22 16:06:25 by bgales           ###   ########.fr       */
+/*   Created: 2021/10/22 15:56:14 by bgales            #+#    #+#             */
+/*   Updated: 2021/10/22 16:17:43 by bgales           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
-#include <stdio.h>
-
-size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
+int	ft_strcmp(const char *s1, const char *s2)
 {
-	int	i;
-	int	c;
-
-	i = 0;
-	c = 0;
-	if (dstsize < 1)
+	while ((*s1 || *s2))
 	{
-		while (src[i])
-			i++;
-		return (i);
+		if ((*s1 > *s2) || (*s1 < *s2))
+			return (*s1 - *s2);
+		s1++;
+		s2++;
 	}
-	while (c < dstsize - 1)
-	{
-		dst[c] = src[c];
-		c++;
-	}
-	dst[c] = '\0';
-	while (src[i])
-		i++;
-	return (i);
+	return (0);
 }

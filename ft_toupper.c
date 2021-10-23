@@ -1,38 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*   ft_toupper.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bgales <bgales@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/21 11:20:50 by bgales            #+#    #+#             */
-/*   Updated: 2021/10/22 16:06:25 by bgales           ###   ########.fr       */
+/*   Created: 2021/10/22 13:08:13 by bgales            #+#    #+#             */
+/*   Updated: 2021/10/22 13:24:21 by bgales           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
-#include <stdio.h>
+#include <ctype.h>
 
-size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
+int	ft_toupper(int c)
 {
-	int	i;
-	int	c;
-
-	i = 0;
-	c = 0;
-	if (dstsize < 1)
-	{
-		while (src[i])
-			i++;
-		return (i);
-	}
-	while (c < dstsize - 1)
-	{
-		dst[c] = src[c];
-		c++;
-	}
-	dst[c] = '\0';
-	while (src[i])
-		i++;
-	return (i);
+	if (c >= 97 && c <= 122)
+		c -= 32;
+	return (c);
 }

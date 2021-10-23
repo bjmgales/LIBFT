@@ -5,36 +5,42 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: bgales <bgales@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/21 14:14:14 by bgales            #+#    #+#             */
-/*   Updated: 2021/10/21 14:52:46 by bgales           ###   ########.fr       */
+/*   Created: 2021/10/22 13:24:42 by bgales            #+#    #+#             */
+/*   Updated: 2021/10/22 16:08:09 by bgales           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdio.h>
 #include <string.h>
+
+size_t	ft_strlen(const char *s)
+{
+	int	index;
+
+	index = 0;
+	while (s[index])
+		index++;
+	return (index);
+}
 
 size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 {
-	int	i;
+	size_t	i;
+	size_t	total_len;
 
 	i = 0;
-	while (*dst)
-		dst++;
-	while (i < dstsize - 1)
-	{
-		*dst++ = *src++;
+	total_len = ft_strlen(src) + ft_strlen(dst);
+	if (dstsize == 0)
+		return (ft_strlen(src));
+	while (dst[i] && i < dstsize)
 		i++;
-	}
-}
-
-int main()
-{
-	char dst[5] = "haha";
-	char src[10] = "0123456789";
-	char dst1[5] = "haha";
-	char src1[10] = "0123456789";
-
-	ft_strlcat(dst, src, 3);
-	strlcat(dst1, src1, 3);
-	printf("%s\n", dst);
-	printf("%s\n", dst1);
+	while (i < (int)dstsize - 1)
+		dst[i++] = *src++;
+	while (ft_strlen(dst) > i)
+		i++;
+	if (dstsize != 0 && ft_strlen(dst) <= dstsize)
+		dst[i] = '\0';
+	if (dstsize < ft_strlen(dst))
+		return (ft_strlen(src) + dstsize);
+	return (total_len);
 }

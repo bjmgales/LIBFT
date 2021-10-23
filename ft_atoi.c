@@ -1,38 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bgales <bgales@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/21 11:20:50 by bgales            #+#    #+#             */
-/*   Updated: 2021/10/22 16:06:25 by bgales           ###   ########.fr       */
+/*   Created: 2021/10/22 23:27:38 by bgales            #+#    #+#             */
+/*   Updated: 2021/10/22 23:46:18 by bgales           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
+#include <stdlib.h>
 #include <stdio.h>
 
-size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
+int	ft_atoi(const char *str)
 {
-	int	i;
-	int	c;
+	int	signe;
+	int	resultat;
 
-	i = 0;
-	c = 0;
-	if (dstsize < 1)
+	signe = 1;
+	resultat = 0;
+	if (str[0] == '-')
 	{
-		while (src[i])
-			i++;
-		return (i);
+		signe *= -1;
+		str++;
 	}
-	while (c < dstsize - 1)
+	if (str[0] == '+')
+		str++;
+	if (*str >= 48 && *str <= 57)
 	{
-		dst[c] = src[c];
-		c++;
+		while (*str)
+		{
+			resultat = (resultat * 10) + (*str - 48);
+			str++;
+		}
+		return (resultat * signe);
 	}
-	dst[c] = '\0';
-	while (src[i])
-		i++;
-	return (i);
+	return (0);
 }
