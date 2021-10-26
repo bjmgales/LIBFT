@@ -6,7 +6,7 @@
 /*   By: bgales <bgales@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/22 23:47:11 by bgales            #+#    #+#             */
-/*   Updated: 2021/10/25 13:22:36 by bgales           ###   ########.fr       */
+/*   Updated: 2021/10/26 13:58:53 by bgales           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,24 +16,19 @@
 
 void	*ft_calloc(size_t count, size_t size)
 {
-	void	*memory;
+	char	*memory;
+	size_t	i;
 
+	i = 0;
 	memory = malloc(size * count);
-	if ((memory == NULL) || (!count || !size))
-		return (NULL);
-	ft_bzero(memory, size * count);
-	return (memory);
-}
-
-int	main(void)
-{
-	int	*a;
-	int	b;
-	int	c;
-
-	b = 0;
-	c = 0;
-	a = ft_calloc(0, 0);
-	printf("%s\n", a);
-	a = 1;
+	if (!count || !size)
+	{
+		count = 1;
+		size = 1;
+	}
+	while (i < size * count)
+	{
+		memory[i++] = '\0';
+	}
+	return ((void *)(memory));
 }

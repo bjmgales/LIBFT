@@ -6,7 +6,7 @@
 /*   By: bgales <bgales@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/22 18:12:02 by bgales            #+#    #+#             */
-/*   Updated: 2021/10/22 18:25:42 by bgales           ###   ########.fr       */
+/*   Updated: 2021/10/26 15:33:18 by bgales           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,30 +15,18 @@
 
 int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {
-	size_t	index;
-	char	*s1tmp;
-	char	*s2tmp;
+	size_t			index;
+	unsigned char	*s1tmp;
+	unsigned char	*s2tmp;
 
 	s1tmp = (void *)(s1);
 	s2tmp = (void *)(s2);
 	index = 0;
-	while ((*s1tmp || *s2tmp) && (index < n))
+	while (index < n)
 	{
-		if ((*s1tmp > *s2tmp) || (*s1tmp < *s2tmp))
-			return ((int)(*s1tmp - *s2tmp));
-		s1tmp++;
-		s2tmp++;
+		if ((s1tmp[index] > s2tmp[index]) || (s1tmp[index] < s2tmp[index]))
+			return ((int)(s1tmp[index] - s2tmp[index]));
+		index++;
 	}
 	return (0);
-}
-
-int	main(void)
-{
-	char	*s1;
-	char	*s2;
-
-	s1 = "za";
-	s2 = "zx";
-	printf("%d\n", ft_memcmp(s1, s2, 100));
-	printf("%d\n", memcmp(s1, s2, 100));
 }

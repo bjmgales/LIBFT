@@ -6,7 +6,7 @@
 /*   By: bgales <bgales@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/25 13:23:32 by bgales            #+#    #+#             */
-/*   Updated: 2021/10/25 22:14:24 by bgales           ###   ########.fr       */
+/*   Updated: 2021/10/26 16:38:02 by bgales           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,4 @@ char	*ft_strdup(const char *s)
 	ft_strlcpy(cpy, s, ft_strlen(s - 2));
 	printf("%s\n", cpy);
 	return (cpy);
-}
-int main()
-{
-	printf("%s", ft_strdup("salut"));
 }

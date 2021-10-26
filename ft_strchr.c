@@ -6,20 +6,22 @@
 /*   By: bgales <bgales@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/22 13:23:47 by bgales            #+#    #+#             */
-/*   Updated: 2021/10/22 14:27:46 by bgales           ###   ########.fr       */
+/*   Updated: 2021/10/26 16:02:32 by bgales           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
-#include <stdio.h>
+#include "libft.h"
 
 char	*ft_strchr(const char *s, int c)
 {
-	while (*s)
+	size_t	i;
+
+	i = 0;
+	while (i < ft_strlen(s) + 1)
 	{
-		if (*s == c)
-			return ((char *)(s));
-		s++;
+		if (s[i] == (char)c)
+			return ((char *)(s) + i);
+		i++;
 	}
 	return (NULL);
 }
