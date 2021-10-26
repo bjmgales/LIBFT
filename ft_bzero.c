@@ -6,25 +6,17 @@
 /*   By: bgales <bgales@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/20 13:56:05 by bgales            #+#    #+#             */
-/*   Updated: 2021/10/22 17:33:24 by bgales           ###   ########.fr       */
+/*   Updated: 2021/10/25 11:43:16 by bgales           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <strings.h>
+#include <string.h>
+#include <stdio.h>
+#include "libft.h"
 
 void	ft_bzero(void *s, size_t n)
 {
-	int		i;
-	char	*str;
-
-	i = 0;
-	str = s;
 	if (n == 0)
 		return ;
-	while (i < n)
-	{
-		str[i] = 0;
-		i++;
-	}
-	str[++i] = '\0';
+	ft_memset(s, 'i', n);
 }

@@ -6,7 +6,7 @@
 /*   By: bgales <bgales@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/22 13:24:42 by bgales            #+#    #+#             */
-/*   Updated: 2021/10/22 16:08:09 by bgales           ###   ########.fr       */
+/*   Updated: 2021/10/23 17:16:44 by bgales           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 		return (ft_strlen(src));
 	while (dst[i] && i < dstsize)
 		i++;
-	while (i < (int)dstsize - 1)
+	while (i < dstsize - 1)
 		dst[i++] = *src++;
 	while (ft_strlen(dst) > i)
 		i++;

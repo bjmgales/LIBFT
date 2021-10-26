@@ -1,29 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncmp.c                                       :+:      :+:    :+:   */
+/*   test.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bgales <bgales@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/22 15:56:14 by bgales            #+#    #+#             */
-/*   Updated: 2021/10/23 17:19:07 by bgales           ###   ########.fr       */
+/*   Created: 2021/10/25 20:01:33 by bgales            #+#    #+#             */
+/*   Updated: 2021/10/25 20:33:50 by bgales           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
+#include <stdlib.h>
+#include <stdio.h>
+#include "libft.h"
 
-int	ft_strncmp(const char *s1, const char *s2, size_t n)
+char	*coucou(char *c)
 {
-	size_t	counter;
+	char	*b;
 
-	counter = 0;
-	while ((*s1 || *s2) && (counter < n))
-	{
-		if ((*s1 > *s2) || (*s1 < *s2))
-			return (*s1 - *s2);
-		s1++;
-		s2++;
-		counter++;
-	}
-	return (0);
+	b = "salut les amis";
+	printf("%d\n", ft_strlen(b));
+	ft_strlcpy(c, b, 15);
+	return (c);
+}
+
+int	main(void)
+{
+	char	s[15]= "";
+	char	*ptr;
+
+	coucou(s);
+	ptr = s;
+	printf("%s", s);
 }

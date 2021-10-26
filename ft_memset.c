@@ -6,7 +6,7 @@
 /*   By: bgales <bgales@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/19 18:03:18 by bgales            #+#    #+#             */
-/*   Updated: 2021/10/22 16:07:08 by bgales           ###   ########.fr       */
+/*   Updated: 2021/10/24 21:56:30 by bgales           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	*ft_memset(void *b, int c, size_t len)
 {
-	int		count;
+	size_t	count;
 	char	*str;
 
 	str = b;
