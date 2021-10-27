@@ -6,44 +6,27 @@
 /*   By: bgales <bgales@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/22 13:24:42 by bgales            #+#    #+#             */
-/*   Updated: 2021/10/26 16:32:27 by bgales           ###   ########.fr       */
+/*   Updated: 2021/10/26 22:36:18 by bgales           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <string.h>
-
-size_t	ft_strlen(const char *s)
-{
-	int	index;
-
-	index = 0;
-	while (s[index])
-		index++;
-	return (index);
-}
+#include "libft.h"
 
 size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 {
 	size_t	i;
-	size_t	total_len;
+	size_t	c;
 
-	i = 0;
-	total_len = ft_strlen(src) + ft_strlen(dst);
-	if (src == (NULL))
-		return (0);
-
-	if (dstsize == 0)
-		return (ft_strlen(src));
-	while (dst[i] && i < dstsize)
-		i++;
-	while (i < dstsize - 1)
-		dst[i++] = *src++;
-	while (ft_strlen(dst) > i)
-		i++;
-	if (dstsize != 0 && ft_strlen(dst) <= dstsize)
-		dst[i] = '\0';
-	if (dstsize < ft_strlen(dst))
-		return (ft_strlen(src) + dstsize);
-	return (total_len);
+	i = ft_strlen(dst);
+	if (i > dstsize)
+		return (dstsize + ft_strlen(src));
+	j = 0;
+	while (src[c] && i + c  < dstsize - 1)
+	{
+		dst[i + j] = src[c];
+		c++;
+	}
+	if (dstsize > 0)
+		dst[i + j] = 0;
+	return (i + ft_strlen(src));
 }
