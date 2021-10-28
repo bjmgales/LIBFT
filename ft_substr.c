@@ -6,7 +6,7 @@
 /*   By: bgales <bgales@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/25 20:51:34 by bgales            #+#    #+#             */
-/*   Updated: 2021/10/26 16:42:13 by bgales           ###   ########.fr       */
+/*   Updated: 2021/10/27 15:50:10 by bgales           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,26 @@
 
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	char	*tmp;
+	char		*tmp;
+	size_t		i;
+	size_t		j;
 
-	if (s == NULL)
-		return(ft_strdup(""));
+	i = 0;
+	j = start;
+	if (start + len > ft_strlen(s))
+		len = start + len - ft_strlen(&s[start]);
+	if (start < 0 || len < 0|| s == (NULL))
+		return (NULL);
+	if (start > ft_strlen(s))
+		return (ft_strdup(""));
+	if (len > ft_strlen(s) - start)
+		len = ft_strlen(&s[start]) + 1;
+	printf("%lu", ft_strlen(&s[start]));
 	tmp = malloc(len + 1);
 	if (tmp == NULL)
 		return (NULL);
-	ft_strlcpy(tmp, s + start, len + 1);
+	while (j < (start + len))
+		tmp[i++] = ((char *)(s))[j++];
+	tmp[i++] = '\0';
 	return (tmp);
 }

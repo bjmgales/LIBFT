@@ -1,35 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test.c                                             :+:      :+:    :+:   */
+/*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bgales <bgales@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/25 20:01:33 by bgales            #+#    #+#             */
-/*   Updated: 2021/10/25 20:33:50 by bgales           ###   ########.fr       */
+/*   Created: 2021/10/27 16:26:04 by bgales            #+#    #+#             */
+/*   Updated: 2021/10/27 16:49:54 by bgales           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include <stdio.h>
-#include "libft.h"
-
-char	*coucou(char *c)
+char	*ft_strtrim(char const *s1, char const *set)
 {
-	char	*b;
+	char	*first_occur;
+	char	*last_occur;
+	int		index_s1;
+	int		index_s2;
 
-	b = "salut les amis";
-	printf("%d\n", ft_strlen(b));
-	ft_strlcpy(c, b, 15);
-	return (c);
-}
-
-int	main(void)
-{
-	char	s[15]= "";
-	char	*ptr;
-
-	coucou(s);
-	ptr = s;
-	printf("%s", s);
+	first_occur = ft_strnstr(s1, set);
+	while (index != 0)
+	{
+		while (s1 == set)
+		{
+			/* code */
+		}
+	}
 }

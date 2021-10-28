@@ -6,13 +6,11 @@
 /*   By: bgales <bgales@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/22 18:59:05 by bgales            #+#    #+#             */
-/*   Updated: 2021/10/22 19:59:18 by bgales           ###   ########.fr       */
+/*   Updated: 2021/10/27 16:06:53 by bgales           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
-#include <stdio.h>
-
+#include "libft.h"
 char	*ft_strnstr(const char *botteDeFoin, const char *aiguille, size_t len)
 {
 	size_t	stopper;
@@ -20,7 +18,7 @@ char	*ft_strnstr(const char *botteDeFoin, const char *aiguille, size_t len)
 
 	i = 0;
 	stopper = 0;
-	if (*aiguille == '\0')
+	if (*aiguille == '\0' || ft_strlen(aiguille) == 0)
 		return ((char *)(botteDeFoin));
 	while ((*botteDeFoin) && (stopper < len))
 	{

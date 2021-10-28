@@ -6,7 +6,7 @@
 /*   By: bgales <bgales@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/25 21:43:17 by bgales            #+#    #+#             */
-/*   Updated: 2021/10/25 22:05:35 by bgales           ###   ########.fr       */
+/*   Updated: 2021/10/27 15:53:28 by bgales           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,22 +17,22 @@ char	*ft_strjoin(char const *s1, char const *s2)
 {
 	char	*tmp;
 	int		i;
+	int		j;
+	int		total_len;
 
-	tmp = malloc((ft_strlen(s1) + ft_strlen(s2) + 1) * sizeof(char));
-	tmp = ft_strdup(s1);
-	printf("%s\n",tmp);
-	i = ft_strlen(s1);
-	/*while (i < (ft_strlen(s1) + ft_strlen(s2)))
+	i = 0;
+	j = 0;
+	total_len = ft_strlen(s1) + ft_strlen(s2);
+	tmp = malloc((total_len)* sizeof(char));
+	if (tmp == (NULL))
+		return (NULL);
+	while (s1[i] != '\0')
 	{
-		printf("lol");
-		tmp[i] = *(char *)(s2);
+		tmp[i] = s1[i];
 		i++;
-		s2++;
-	}*/
+	}
+	while (s2[j] != '\0')
+		tmp[i++] = s2[j++];
+	tmp[i] = '\0';
 	return (tmp);
-}
-
-int	main(void)
-{
-	printf("%s\n", ft_strjoin("salut", "hey"));
 }
