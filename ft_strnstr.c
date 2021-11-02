@@ -6,33 +6,36 @@
 /*   By: bgales <bgales@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/22 18:59:05 by bgales            #+#    #+#             */
-/*   Updated: 2021/10/27 16:06:53 by bgales           ###   ########.fr       */
+/*   Updated: 2021/11/01 22:30:28 by bgales           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-char	*ft_strnstr(const char *botteDeFoin, const char *aiguille, size_t len)
+char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 {
 	size_t	stopper;
 	size_t	i;
 
 	i = 0;
 	stopper = 0;
-	if (*aiguille == '\0' || ft_strlen(aiguille) == 0)
-		return ((char *)(botteDeFoin));
-	while ((*botteDeFoin) && (stopper < len))
+	if (*needle == '\0')
+		return ((char *)(haystack));
+	if (len > ft_strlen(haystack))
+		len = ft_strlen(haystack);
+	while ((*haystack != '\0') && (stopper < len))
 	{
-		while ((*botteDeFoin == aiguille[i]) && (stopper < len))
+		while ((*haystack == needle[i]) && (stopper < len))
 		{
-			if (aiguille[i + 1] == '\0')
-				return ((char *)(botteDeFoin - i));
-			botteDeFoin++;
-			i++;
+			if (needle[i + 1] == '\0')
+				return ((char *)(haystack - i));
+			++i;
+			printf("%d\n", i);
+			++haystack;
 			stopper++;
 		}
 		i = 0;
 		stopper++;
-		botteDeFoin++;
+		haystack++;
 	}
 	return (NULL);
 }

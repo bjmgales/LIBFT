@@ -6,7 +6,7 @@
 /*   By: bgales <bgales@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/22 13:24:42 by bgales            #+#    #+#             */
-/*   Updated: 2021/10/27 10:02:38 by bgales           ###   ########.fr       */
+/*   Updated: 2021/11/01 21:34:53 by bgales           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,11 @@ size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 	{
 		dst[i + c] = src[c];
 		c++;
+	}
+	if (dstsize <= 0)
+	{
+		dst[0] = 0;
+		return (ft_strlen(src));
 	}
 	if (dstsize > 0)
 		dst[i + c] = 0;

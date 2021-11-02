@@ -6,7 +6,7 @@
 /*   By: bgales <bgales@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/20 18:17:35 by bgales            #+#    #+#             */
-/*   Updated: 2021/10/26 21:47:22 by bgales           ###   ########.fr       */
+/*   Updated: 2021/11/01 19:38:15 by bgales           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,25 +15,24 @@
 
 void	*ft_memmove(void *dst, const void *src, size_t len)
 {
-	size_t	i;
-	char	*tmp1;
-	char	*tmp2;
+	size_t			i;
+	char	*dst_cpy;
+	char	*src_cpy;
 
 	i = 0;
-	tmp1 = (char *)dst;
-	tmp2 = (char *)src;
-	if (len == 0)
-		return (dst);
-	while (i < len)
-	{
-		tmp1[i] = tmp2[i];
-		i++;
-	}
-	i = 0;
-	while (tmp1[i])
-	{
-		((char *)dst)[i] = tmp1[i];
-		i++;
-	}
+	dst_cpy = (char *)dst;
+	src_cpy = (char *)src;
+	if (dst_cpy > src_cpy)
+		while (i < len)
+		{
+			dst_cpy[len - 1] = src_cpy[len - 1];
+			len--;
+		}
+	else
+		while (i < len)
+		{
+			dst_cpy[i] = src_cpy[i];
+			i++;
+		}
 	return (dst);
 }

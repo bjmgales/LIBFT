@@ -6,7 +6,7 @@
 /*   By: bgales <bgales@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/21 11:20:50 by bgales            #+#    #+#             */
-/*   Updated: 2021/10/25 22:14:47 by bgales           ###   ########.fr       */
+/*   Updated: 2021/11/01 18:56:45 by bgales           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 
 	i = 0;
 	c = 0;
+	
 	if (dstsize < 1)
 	{
 		while (src[i])
@@ -32,7 +33,7 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 		c++;
 	}
 	dst[c] = '\0';
-	while (src[i])
+	while (src[i] != '\0')
 		i++;
 	return (i);
 }
