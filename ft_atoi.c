@@ -6,7 +6,7 @@
 /*   By: bgales <bgales@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/22 23:27:38 by bgales            #+#    #+#             */
-/*   Updated: 2021/11/02 09:36:13 by bgales           ###   ########.fr       */
+/*   Updated: 2021/11/06 00:58:44 by bgales           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,4 @@ int	ft_atoi(const char *str)
 		i++;
 	}
 	return (resultat * signe);
-}
-int	main(void)
-{
-	printf("%d\n", ft_atoi("INT_MAX"));
-	printf("%d\n", atoi("INT_MAX"));
 }
