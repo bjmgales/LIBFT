@@ -1,72 +1,112 @@
-NAME= libft.a
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: bgales <bgales@student.42.fr>              +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2021/10/30 14:23:25 by aguiri            #+#    #+#              #
+#    Updated: 2023/04/28 16:07:47 by bgales           ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
 
-SOURCES=ft_atoi.c \
-ft_bzero.c \
-ft_calloc.c \
-ft_isalnum.c \
-ft_isalpha.c \
-ft_isascii.c \
-ft_isdigit.c \
-ft_isprint.c \
-ft_itoa.c \
-ft_memchr.c \
-ft_memcmp.c \
-ft_memcpy.c \
-ft_memmove.c \
-ft_memset.c \
-ft_putchar_fd.c \
-ft_putendl_fd.c \
-ft_putnbr_fd.c \
-ft_putstr_fd.c \
-ft_split.c \
-ft_strchr.c \
-ft_strdup.c \
-ft_striteri.c \
-ft_strjoin.c \
-ft_strlcat.c \
-ft_strlcpy.c \
-ft_strlen.c \
-ft_strmapi.c \
-ft_strncmp.c \
-ft_strnstr.c \
-ft_strrchr.c \
-ft_strtrim.c \
-ft_substr.c \
-ft_tolower.c \
-ft_toupper.c \
+NAME				?=	libft
 
-OBJS=	$(SOURCES:.c=.o)
+CC					=	gcc -g -fsanitize=address
+CFLAGS				?=	-Wall -Wextra -Werror
+AR 					?=	ar
+RM					?=	rm -f
+MKDIR				?=	mkdir -p
+ECHO				?=	echo
 
-BONUS=ft_lstnew.c \
-ft_lstadd_back.c \
-ft_lstadd_front.c \
-ft_lstsize.c \
-ft_lstlast.c \
-ft_lstdelone.c \
-ft_lstclear.c \
-ft_lstiter.c \
-ft_lstmap.c \
+RWILDCARD			=	$(foreach d,\
+						$(wildcard $(1:=/*)),\
+						$(call RWILDCARD,$d,$2) $(filter $(subst *,%,$2),$d))
 
-BONUS_OBJ= $(BONUS:.c=.o)
+# ********************************* F O N T S *********************************
 
-FLAGS=	-Wall -Werror -Wextra
+EOC					:=	"\033[0m"
+LIGHT				:=	"\033[1m"
+DARK				:=	"\033[2m"
 
-all:$(NAME)
+ITALIC				:=	"\033[3m"
+UNDERLINE			:=	"\033[4m"
 
-$(NAME):$(OBJS)
-	ar crs $(NAME) $(OBJS)
+BLACK				:=	"\033[30m"
+RED					:=	"\033[31m"
+GREEN				:=	"\033[32m"
+BLUE				:=	"\033[34m"
+PURPLE				:=	"\033[35m"
+CYAN				:=	"\033[36m"
+WHITE				:=	"\033[37m"
 
-.c.o:
-	gcc $(FLAGS) -c $< -o $(<:.c=.o)
-clean :
-	rm -rf $(OBJS) $(BONUS_OBJ)
+# ********************************* P A T H S *********************************
 
-fclean : clean
-	rm -rf $(NAME)
-re : fclean all
+SRCS_PATH			:=	src
+OBJS_PATH			:=	bin
+HDRS_PATH			:=	include
+LIBS_PATH			:=	lib
 
-bonus:$(BONUS_OBJ)
-	ar crs $(NAME) $(BONUS_OBJ)
+# ********************************* N A M E S *********************************
 
-.PHONY : all clean fclean re
+SRCS				:=	$(call RWILDCARD,$(SRCS_PATH),*.c)
+OBJS 				:=	$(addprefix $(OBJS_PATH)/, $(SRCS:$(SRCS_PATH)/%.c=%.o))
 
+# ********************************* H E A D S *********************************
+
+HFLAGS				:=	-I $(HDRS_PATH)\
+						-I $(LIBFT_PATH)/$(HDRS_PATH)
+
+# ********************************** L I B S **********************************
+
+# Libft
+FTFLAGS				:=
+
+LFLAGS				:=	$(FTFLAGS)
+
+# ********************************* N O R M E *********************************
+
+NRM					:=	norminette
+NFLAGS				?=	-R CheckForbiddenSourceHeader
+
+# ********************************* R U L E S *********************************
+
+all:				$(NAME)
+
+$(OBJS_PATH)/%.o: 	$(SRCS_PATH)/%.c $(HDRS_PATH)
+					@$(MKDIR) $(dir $@)
+					@$(ECHO)\
+					$(WHITE)$(DARK)"Compiling $<"$(EOC)
+					@$(CC) $(HFLAGS) -o $@ -c $<
+
+
+$(NAME):			$(OBJS)
+					@$(CC) $^ $(FTFLAGS) $(LFLAGS) -o $@
+					@$(ECHO)\
+					$(CYAN)$(UNDERLINE)"$@"$(EOC)": "$(GREEN)"complete"$(EOC)
+
+clean:
+					@$(ECHO)\
+					$(RED)"Deleting binary files"$(EOC)
+					@$(RM) $(OBJS)
+
+fclean:				clean
+					@$(ECHO)\
+					$(RED)"Deleting executable file"$(EOC)
+					@$(RM) -r $(OBJS_PATH)
+					@$(RM) $(NAME)
+
+re:					fclean all
+
+# *************************** B O N U S   R U L E S ***************************
+
+norme:				$(NAME)
+					@$(NRM) $(NFLAGS) $(HDRS_PATH) $(SRCS_PATH)
+
+lib:				libft mlx
+					mlx mlx_clean mlx_re
+					mlx mlx_clean mlx_re
+
+.PHONY:				all clean fclean re\
+					norme lib\
+					libft libft_clean libft_fclean libft_re
