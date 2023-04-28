@@ -5,14 +5,14 @@
 #                                                     +:+ +:+         +:+      #
 #    By: bgales <bgales@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2021/10/30 14:23:25 by aguiri            #+#    #+#              #
-#    Updated: 2023/04/28 16:07:47 by bgales           ###   ########.fr        #
+#    Created: 2021/10/30 14:23:25 by bgales            #+#    #+#              #
+#    Updated: 2023/04/28 17:21:08 by bgales           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME				?=	libft
 
-CC					=	gcc -g -fsanitize=address
+CC					=	gcc
 CFLAGS				?=	-Wall -Wextra -Werror
 AR 					?=	ar
 RM					?=	rm -f
